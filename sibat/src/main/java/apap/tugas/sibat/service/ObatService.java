@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ObatService {
     List<ObatModel> getObatList();
+    void addObat(ObatModel obat);
     void delete(ObatModel obatModel);
 }
