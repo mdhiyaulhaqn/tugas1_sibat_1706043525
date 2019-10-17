@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beranda</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <div class="container" align="center" style="width: 40%">
+        <h2>Detail Data Obat</h2>
+        <div class="col">
+            <div class="row">
+                <p th:text="Kode">
+                <p th:text="${obat.kode}"> </p>
+            </div>
+            <div class="row">
+                <p th:text="Nama">
+                <p th:text="${obat.nama}"> </p>
+            </div>
+            <!--<div class="row">-->
+                <!--<p th:text="Nomor Registrasi">-->
+                <!--<p th:text="${obat.nomorRegistrasi}"> </p>-->
+            <!--</div>-->
+            <div class="row">
+                <p th:text="Bentuk">
+                <p th:text="${obat.bentuk}"> </p>
+            </div>
+            <!--<div class="row">-->
+                <!--<p th:text="Tanggal Terbit">-->
+                <!--<p th:text="${obat.tanggalTerbit}"> </p>-->
+            <!--</div>-->
+            <div class="row">
+                <p th:text="Harga">
+                <p th:text="'Rp ' + ${obat.harga}"> </p>
+            </div>
+            <!--<div class="row">-->
+                <!--<p th:text="Jenis Obat">-->
+                <!--<p th:text="${obat.jenis.nama}"> </p>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<p th:text="Gudang tempat disimpan">-->
+                <!--<p th:text="${obat.gudang}"> </p>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+
+</body>
+</html>

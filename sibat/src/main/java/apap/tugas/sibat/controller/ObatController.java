@@ -7,10 +7,7 @@ import apap.tugas.sibat.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -49,6 +46,18 @@ public class ObatController {
 
         return "add-obat-submit";
     }
+
+    @RequestMapping(value="/obat/view", method = RequestMethod.GET)
+    public String viewObat(@RequestParam(value="noReg") String noReg, Model model){
+        ObatModel obat = obatService.getObatByNomorRegistrasi(noReg).get();
+
+        model.addAttribute("obat", obat);
+        return "view-obat";
+    }
+
+
+
+
 
     //    Remove Obat dari list beranda
 //    @RequestMapping(value = "/", params=("hapusObat"))

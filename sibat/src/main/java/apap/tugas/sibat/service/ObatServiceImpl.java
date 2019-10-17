@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ObatServiceImpl implements ObatService{
@@ -25,5 +26,10 @@ public class ObatServiceImpl implements ObatService{
     @Override
     public void addObat(ObatModel obat) {
         obatDb.save(obat);
+    }
+
+    @Override
+    public Optional<ObatModel> getObatByNomorRegistrasi(String nomorRegistrasi) {
+        return obatDb.findByNomorRegistrasi(nomorRegistrasi);
     }
 }
