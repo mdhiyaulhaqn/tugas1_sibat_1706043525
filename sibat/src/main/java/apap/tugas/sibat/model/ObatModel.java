@@ -57,4 +57,84 @@ public class ObatModel implements Serializable {
 
     @OneToMany(mappedBy = "obat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ObatSupplierModel> listObatSupplier;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getKode() {
+        return kode;
+    }
+
+    public void setKode(String kode) {
+        this.kode = kode;
+    }
+
+    public Double getHarga() {
+        return harga;
+    }
+
+    public void setHarga(Double harga) {
+        this.harga = harga;
+    }
+
+    public String getNomor_registrasi() {
+        return nomor_registrasi;
+    }
+
+    public void setNomor_registrasi(String nomor_registrasi) {
+        this.nomor_registrasi = nomor_registrasi;
+    }
+
+    public String getBentuk() {
+        return bentuk;
+    }
+
+    public void setBentuk(String bentuk) {
+        this.bentuk = bentuk;
+    }
+
+    public Date getTanggal_terbit() {
+        return tanggal_terbit;
+    }
+
+    public void setTanggal_terbit(Date tanggal_terbit) {
+        this.tanggal_terbit = tanggal_terbit;
+    }
+
+    public JenisModel getJenis() {
+        return jenis;
+    }
+
+    public void setJenis(JenisModel jenis) {
+        this.jenis = jenis;
+    }
+
+    public List<GudangObatModel> getListGudangObat() {
+        return listGudangObat;
+    }
+
+    public void setListGudangObat(List<GudangObatModel> listGudangObat) {
+        this.listGudangObat = listGudangObat;
+    }
+
+    public List<ObatSupplierModel> getListObatSupplier() {
+        return listObatSupplier;
+    }
+
+    public void setListObatSupplier(List<ObatSupplierModel> listObatSupplier) {
+        this.listObatSupplier = listObatSupplier;
+    }
 }
