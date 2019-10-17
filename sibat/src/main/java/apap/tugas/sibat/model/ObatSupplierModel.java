@@ -8,20 +8,20 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "obat_supplier")
+@Table(name = "obatSupplier")
 public class ObatSupplierModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_obat", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idObat", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private ObatModel obat;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_supplier", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idSupplier", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private SupplierModel supplier;

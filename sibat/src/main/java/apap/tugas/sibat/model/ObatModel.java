@@ -34,8 +34,8 @@ public class ObatModel implements Serializable {
 
     @NotNull
     @Size(max = 255)
-    @Column(name = "nomor_registrasi", nullable = false, unique = true)
-    private String nomor_registrasi;
+    @Column(name = "nomorRegistrasi", nullable = false, unique = true)
+    private String nomorRegistrasi;
 
     @NotNull
     @Size(max = 255)
@@ -43,11 +43,11 @@ public class ObatModel implements Serializable {
     private String bentuk;
 
     @NotNull
-    @Column(name = "tanggal_terbit", nullable = false)
-    private Date tanggal_terbit;
+    @Column(name = "tanggalTerbit", nullable = false)
+    private Date tanggalTerbit;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_jenis", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idJenis", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private JenisModel jenis;
@@ -90,12 +90,12 @@ public class ObatModel implements Serializable {
         this.harga = harga;
     }
 
-    public String getNomor_registrasi() {
-        return nomor_registrasi;
+    public String getNomorRegistrasi() {
+        return nomorRegistrasi;
     }
 
-    public void setNomor_registrasi(String nomor_registrasi) {
-        this.nomor_registrasi = nomor_registrasi;
+    public void setNomorRegistrasi(String nomorRegistrasi) {
+        this.nomorRegistrasi = nomorRegistrasi;
     }
 
     public String getBentuk() {
@@ -106,12 +106,12 @@ public class ObatModel implements Serializable {
         this.bentuk = bentuk;
     }
 
-    public Date getTanggal_terbit() {
-        return tanggal_terbit;
+    public Date getTanggalTerbit() {
+        return tanggalTerbit;
     }
 
-    public void setTanggal_terbit(Date tanggal_terbit) {
-        this.tanggal_terbit = tanggal_terbit;
+    public void setTanggalTerbit(Date tanggalTerbit) {
+        this.tanggalTerbit = tanggalTerbit;
     }
 
     public JenisModel getJenis() {

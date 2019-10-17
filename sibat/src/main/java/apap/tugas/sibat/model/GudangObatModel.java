@@ -15,13 +15,13 @@ public class GudangObatModel implements Serializable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_gudang", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idGudang", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private GudangModel gudang;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_obat", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idObat", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private ObatModel obat;
