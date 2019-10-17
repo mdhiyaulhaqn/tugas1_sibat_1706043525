@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "jenis")
+@Table(name = "supplier")
 public class SupplierModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

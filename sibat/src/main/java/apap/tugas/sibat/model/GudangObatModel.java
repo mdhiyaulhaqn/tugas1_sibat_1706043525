@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "jenis")
+@Table(name = "gudang_obat")
 public class GudangObatModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

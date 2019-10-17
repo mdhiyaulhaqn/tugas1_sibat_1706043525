@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "jenis")
+@Table(name = "obat")
 public class ObatModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
