@@ -36,6 +36,28 @@ public class ObatServiceImpl implements ObatService{
     }
 
     @Override
+    public Optional<ObatModel> getObatById(String id) {
+        return obatDb.findById(Long.parseLong(id));
+    }
+
+    @Override
+    public ObatModel changeObat(ObatModel obat) {
+        ObatModel targetObat = obatDb.findById(obat.getId()).get();
+
+        try{
+            targetObat.setNama(obat.getNama());
+            targetObat.setTanggalTerbit(obat.getTanggalTerbit());
+            targetObat.setHarga(obat.getHarga());
+            targetObat.setBentuk(obat.getBentuk());
+            targetObat.setKode(obat.getKode());
+            obatDb.save(targetObat);
+            return targetObat;
+        } catch (NullPointerException npe){
+            return null;
+        }
+    }
+
+    @Override
     public ObatModel generateKodeObat(ObatModel obat) {
         String kode = "";
 

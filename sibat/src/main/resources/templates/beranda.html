@@ -32,7 +32,8 @@
                     <td>
                         <!--<a class="btn btn-info" th:href="@{/obat/view/{noReg}(noReg=${obat.nomorRegistrasi})}">Lihat</a>-->
                         <a class="btn btn-info" th:href="@{/obat/view?noReg=}+${obat.nomorRegistrasi}">Lihat</a>
-                        <button type="submit" th:value="${indexStat.index}" class="btn" style="background-color: black; color:white;">Ubah</button>
+                        <a class="btn btn-info" th:href="@{/obat/ubah?id=}+${obat.id}" style="background-color: black; color:white;">Ubah</a>
+                        <!--<button type="submit" th:value="${indexStat.index}" class="btn" style="background-color: black; color:white;">Ubah</button>-->
                         <button type="submit"  name="hapusObat" th:value="${indexStat.index}"  class="btn btn-danger">Hapus</button>
                         <p th:text="${test}"></p>
                     </td>

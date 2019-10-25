@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ubah Obat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <h1> Tambah Obat </h1>
+    <form th:action="@{/obat/ubah?id={id}(id=${obat.id})}" th:object="${obat}" method="POST">
+        <input type="hidden" th:field="${obat.id}"/>
+        <input type="hidden" th:field="${obat.nomorRegistrasi}"/>
+        <input type="hidden" th:field="${obat.id}"/>
+        <input type="hidden" th:field="${obat.jenis}"/>
+        Nama: <br>
+        <input type="text" th:field="*{nama}"/>
+        <br>
+        Tanggal Terbit: <br>
+        <input type="date"  th:field="*{tanggalTerbit}"/>
+        <br>
+        Harga: <br>
+        <input type="number" th:field="*{harga}"/>
+        <br>
+        Bentuk: <br>
+        <select name="bentuk" th:field="*{bentuk}">
+            <option th:value="Cairan" th:text="Cairan"></option>
+            <option th:value="Kapsul" th:text="Kapsul"></option>
+            <option th:value="Tablet" th:text="Tablet"></option>
+        </select>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

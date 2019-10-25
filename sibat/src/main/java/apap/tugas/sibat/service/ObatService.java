@@ -11,4 +11,6 @@ public interface ObatService {
     void delete(ObatModel obatModel);
     Optional<ObatModel> getObatByNomorRegistrasi(String nomorRegistrasi);
     ObatModel generateKodeObat(ObatModel obat);
+    Optional<ObatModel> getObatById(String id);
+    ObatModel changeObat(ObatModel obat);
 }

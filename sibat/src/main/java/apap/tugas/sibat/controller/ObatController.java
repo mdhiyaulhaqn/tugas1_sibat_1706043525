@@ -51,6 +51,7 @@ public class ObatController {
     public String addObatSubmit(@ModelAttribute ObatModel obat, Model model){
         obat = obatService.generateKodeObat(obat);
         obatService.addObat(obat);
+        
 
         model.addAttribute("obat", obat);
 
@@ -65,6 +66,20 @@ public class ObatController {
         return "view-obat";
     }
 
+    @RequestMapping(value="/obat/ubah", method = RequestMethod.GET)
+    public String changeObatForm(@RequestParam(value="id") String idObat, Model model){
+        ObatModel obat = obatService.getObatById(idObat).get();
+        model.addAttribute("obat", obat);
+        return "form-change-obat";
+    }
+
+    @RequestMapping(value="/obat/ubah", method = RequestMethod.POST)
+    public String changeObatSubmit(@ModelAttribute ObatModel obat, Model model){
+        obat = obatService.generateKodeObat(obat);
+        ObatModel newObat = obatService.changeObat(obat);
+        model.addAttribute("obat", newObat);
+        return "change-obat-submitted";
+    }
 
 
 
