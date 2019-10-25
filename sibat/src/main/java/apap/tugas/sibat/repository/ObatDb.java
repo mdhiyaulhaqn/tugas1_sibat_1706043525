@@ -10,4 +10,6 @@ public interface ObatDb extends JpaRepository<ObatModel, Long>{
     Optional<ObatModel> findById(Long aLong);
 
     Optional<ObatModel> findByNomorRegistrasi(String nomorRegistrasi);
+
+    boolean existsByKode(String kode);
 }

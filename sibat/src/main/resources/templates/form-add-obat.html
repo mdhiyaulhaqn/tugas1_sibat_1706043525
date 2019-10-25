@@ -20,17 +20,17 @@
         Tanggal Terbit
         <input type="date" th:field="*{tanggalTerbit}" name="tanggalTerbit"/>
         <br>
-        Kode
-        <input type="text" th:field="*{kode}" name="kode"/>
-        <br>
+        <!--Kode-->
+        <!--<input type="text" th:field="*{kode}" name="kode"/>-->
+        <!--<br>-->
         Harga
         <input type="number" th:field="*{harga}" name="harga"/>
         <br>
         Bentuk
         <select name="bentuk" th:field="*{bentuk}">
-            <option th:value="cairan" th:text="Cairan"></option>
-            <option th:value="kapsul" th:text="Kapsul"></option>
-            <option th:value="tablet" th:text="Tablet"></option>
+            <option th:value="Cairan" th:text="Cairan"></option>
+            <option th:value="Kapsul" th:text="Kapsul"></option>
+            <option th:value="Tablet" th:text="Tablet"></option>
         </select>
         <br>
         Jenis
@@ -48,8 +48,8 @@
                 <option th:value="${supplier.id}" th:text="${supplier.nama}"></option>
             </div>
         </select>
-
-        <button type="submit"> Submit </button>
+        <br>
+        <button type="submit" class="btn btn-primary"> Submit </button>
     </form>
 </body>
 </html>

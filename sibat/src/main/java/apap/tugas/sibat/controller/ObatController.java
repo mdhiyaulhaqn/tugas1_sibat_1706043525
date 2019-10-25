@@ -49,6 +49,7 @@ public class ObatController {
 
     @RequestMapping(value="/obat/tambah", method = RequestMethod.POST)
     public String addObatSubmit(@ModelAttribute ObatModel obat, Model model){
+        obat = obatService.generateKodeObat(obat);
         obatService.addObat(obat);
 
         model.addAttribute("obat", obat);
