@@ -10,29 +10,36 @@
 <body>
     <h1> Tambah Obat </h1>
     <form th:action="@{/obat/tambah}" th:object="${obat}" method="POST">
+        <input type="hidden" th:field="*{id}"/>
         Nama
-        <input type="text" name="nama"/>
+        <input type="text" th:field="*{nama}" name="nama"/>
         <br>
         Nomor Registrasi
-        <input type="text" name="alamat"/>
+        <input type="text" th:field="*{nomorRegistrasi}" name="nomorRegistrasi"/>
         <br>
         Tanggal Terbit
-        <input type="date" name="tanggal_terbit"/>
+        <input type="date" th:field="*{tanggalTerbit}" name="tanggalTerbit"/>
+        <br>
+        Kode
+        <input type="text" th:field="*{kode}" name="kode"/>
         <br>
         Harga
-        <input type="number" name="harga"/>
+        <input type="number" th:field="*{harga}" name="harga"/>
         <br>
         Bentuk
-        <select name="bentuk">
+        <select name="bentuk" th:field="*{bentuk}">
             <option th:value="cairan" th:text="Cairan"></option>
             <option th:value="kapsul" th:text="Kapsul"></option>
             <option th:value="tablet" th:text="Tablet"></option>
         </select>
         <br>
         Jenis
-        <select name="jenis">
-            <option th:value="generik" th:text="Generik"></option>
-            <option th:value="paten" th:text="Paten"></option>
+        <select name="jenis" th:field="*{jenis}">
+            <div th:each="jenis: ${listJenis}">
+                <option th:value="${jenis.id}" th:text="${jenis.nama}"></option>
+            </div>
+            <!--<option th:value="generik" th:text="Generik"></option>-->
+            <!--<option th:value="paten" th:text="Paten"></option>-->
         </select>
         <br>
         Supplier

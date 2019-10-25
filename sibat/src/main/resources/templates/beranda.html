@@ -30,7 +30,8 @@
                     <td th:text="${obat.nama}"></td>
                     <td th:text="'Rp ' + ${#numbers.formatInteger(obat.harga,3,'POINT')}"></td>
                     <td>
-                        <button type="submit" th:value="${indexStat.index}" class="btn btn-info">Lihat</button>
+                        <!--<a class="btn btn-info" th:href="@{/obat/view/{noReg}(noReg=${obat.nomorRegistrasi})}">Lihat</a>-->
+                        <a class="btn btn-info" th:href="@{/obat/view?noReg=}+${obat.nomorRegistrasi}">Lihat</a>
                         <button type="submit" th:value="${indexStat.index}" class="btn" style="background-color: black; color:white;">Ubah</button>
                         <button type="submit"  name="hapusObat" th:value="${indexStat.index}"  class="btn btn-danger">Hapus</button>
                         <p th:text="${test}"></p>
@@ -38,6 +39,9 @@
                 </tr>
             </tbody>
         </table>
+        <div style="text-align: right;">
+            <a class="btn" th:href="@{/obat/tambah}" style="background-color: black; color:white;">Tambah Obat</a>
+        </div>
     </div>
 </body>
 </html>

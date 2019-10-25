@@ -1,7 +1,9 @@
 package apap.tugas.sibat.controller;
 
+import apap.tugas.sibat.model.JenisModel;
 import apap.tugas.sibat.model.ObatModel;
 import apap.tugas.sibat.model.SupplierModel;
+import apap.tugas.sibat.service.JenisService;
 import apap.tugas.sibat.service.ObatService;
 import apap.tugas.sibat.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class ObatController {
     @Autowired
     SupplierService supplierService;
 
+    @Autowired
+    JenisService jenisService;
+
     @RequestMapping(value = "/")
     private String findAllObat(Model model){
         List<ObatModel> listObat = obatService.getObatList();
@@ -30,21 +35,25 @@ public class ObatController {
     @RequestMapping(value="/obat/tambah", method = RequestMethod.GET)
     public String addObatForm(Model model){
         ObatModel newObat = new ObatModel();
+
         model.addAttribute("obat", newObat);
 
         List<SupplierModel> listSupplier = supplierService.getSupplierList();
         model.addAttribute("listSupplier", listSupplier);
 
+        List<JenisModel> listJenis = jenisService.getJenisList();
+        model.addAttribute("listJenis", listJenis);
+
         return "form-add-obat";
     }
 
-    @RequestMapping(value="/obat/", method = RequestMethod.POST)
+    @RequestMapping(value="/obat/tambah", method = RequestMethod.POST)
     public String addObatSubmit(@ModelAttribute ObatModel obat, Model model){
         obatService.addObat(obat);
 
         model.addAttribute("obat", obat);
 
-        return "add-obat-submit";
+        return "add-obat-submitted";
     }
 
     @RequestMapping(value="/obat/view", method = RequestMethod.GET)
