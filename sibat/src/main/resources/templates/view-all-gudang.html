@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beranda</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <br>
+        <tr th:each="gudang, indexStat : ${gudangList}">
+            <td th:text="${__${indexStat.index + 1}__}"></td>
+            <td th:text="${gudang.nama}"></td>
+            <td th:text="${gudang.alamat}"></td>
+            <td>
+                <!--<a class="btn btn-info" th:href="@{/obat/view/{noReg}(noReg=${obat.nomorRegistrasi})}">Lihat</a>-->
+                <a class="btn btn-info" th:href="@{/}">Lihat</a>
+                <a class="btn btn-info" th:href="@{/}" style="background-color: black; color:white;">Ubah</a>
+                <!--<button type="submit" th:value="${indexStat.index}" class="btn" style="background-color: black; color:white;">Ubah</button>-->
+                <button type="submit" name="hapusObat" th:value="${indexStat.index}"  class="btn btn-danger">Hapus</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="text-align: right;">
+        <a class="btn" th:href="@{/gudang/tambah}" style="background-color: black; color:white;">Tambah Gudang</a>
+    </div>
+</div>
+</body>
+</html>

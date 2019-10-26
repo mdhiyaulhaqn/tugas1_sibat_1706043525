@@ -8,9 +8,8 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <h2 style="color: white;">Daftar Obat</h2>
-    </nav>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+
     <div class="container">
         <table class="table">
             <thead>

@@ -2,6 +2,7 @@ package apap.tugas.sibat.controller;
 
 import apap.tugas.sibat.model.JenisModel;
 import apap.tugas.sibat.model.ObatModel;
+import apap.tugas.sibat.model.ObatSupplierModel;
 import apap.tugas.sibat.model.SupplierModel;
 import apap.tugas.sibat.service.JenisService;
 import apap.tugas.sibat.service.ObatService;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -38,8 +40,19 @@ public class ObatController {
 
         model.addAttribute("obat", newObat);
 
-        List<SupplierModel> listSupplier = supplierService.getSupplierList();
-        model.addAttribute("listSupplier", listSupplier);
+        List<SupplierModel> listJenisSupplier = supplierService.getSupplierList();
+//        model.addAttribute("listJenisSupplier", listJenisSupplier);
+
+//        List<List<SupplierModel>> listSupplier = new ArrayList<>();
+//        listSupplier.add(listJenisSupplier);
+//        model.addAttribute("listSupplier", listSupplier);
+
+        List<ObatSupplierModel> listObatSupplier = new ArrayList<>();
+
+        ObatSupplierModel obatSupplierModel = new ObatSupplierModel();
+        listObatSupplier.add(obatSupplierModel);
+        newObat.setListObatSupplier(listObatSupplier);
+//        model.addAttribute("listObatSupplier", listObatSupplier);
 
         List<JenisModel> listJenis = jenisService.getJenisList();
         model.addAttribute("listJenis", listJenis);
@@ -48,10 +61,11 @@ public class ObatController {
     }
 
     @RequestMapping(value="/obat/tambah", method = RequestMethod.POST)
-    public String addObatSubmit(@ModelAttribute ObatModel obat, Model model){
+    public String addObatSubmit(@ModelAttribute ObatModel obat, @ModelAttribute List<ObatSupplierModel> listObatSupplier, Model model){
         obat = obatService.generateKodeObat(obat);
+//        obat.setListObatSupplier(listObatSupplier);
         obatService.addObat(obat);
-        
+
 
         model.addAttribute("obat", obat);
 
