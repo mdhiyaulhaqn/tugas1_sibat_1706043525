@@ -22,4 +22,10 @@ public class GudangServiceImpl implements GudangService {
     public Optional<GudangModel> getGudangById(Long id) {
         return gudangDb.findById(id);
     }
+
+
+    @Override
+    public void addGudang(GudangModel gudang) {
+        gudangDb.save(gudang);
+    }
 }

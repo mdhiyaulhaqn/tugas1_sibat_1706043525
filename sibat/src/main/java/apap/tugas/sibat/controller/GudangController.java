@@ -6,6 +6,7 @@ import apap.tugas.sibat.service.GudangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,4 +33,23 @@ public class GudangController {
         model.addAttribute("gudang", gudang);
         return "view-gudang";
     }
+
+    @RequestMapping(value="/gudang/tambah", method = RequestMethod.GET)
+    public String addGudangForm(Model model){
+        GudangModel newGudang = new GudangModel();
+
+        model.addAttribute("gudang", newGudang);
+
+        return "form-add-gudang";
+    }
+
+    @RequestMapping(value="/gudang/tambah", method = RequestMethod.POST)
+    public String addGudangSubmit(@ModelAttribute GudangModel gudang, Model model){
+        gudangService.addGudang(gudang);
+
+        model.addAttribute("gudang", gudang);
+        return "add-gudang-submitted";
+    }
+
+
 }

@@ -9,4 +9,6 @@ public interface GudangService {
     List<GudangModel> getGudangList();
 
     Optional<GudangModel> getGudangById(Long id);
+
+    void addGudang(GudangModel gudang);
 }
