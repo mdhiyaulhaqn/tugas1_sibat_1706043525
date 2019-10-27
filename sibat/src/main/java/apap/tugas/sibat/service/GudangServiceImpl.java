@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GudangServiceImpl implements GudangService {
@@ -15,5 +16,10 @@ public class GudangServiceImpl implements GudangService {
     @Override
     public List<GudangModel> getGudangList() {
         return gudangDb.findAll();
+    }
+
+    @Override
+    public Optional<GudangModel> getGudangById(Long id) {
+        return gudangDb.findById(id);
     }
 }
