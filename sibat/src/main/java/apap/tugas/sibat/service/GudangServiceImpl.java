@@ -23,9 +23,13 @@ public class GudangServiceImpl implements GudangService {
         return gudangDb.findById(id);
     }
 
-
     @Override
     public void addGudang(GudangModel gudang) {
         gudangDb.save(gudang);
+    }
+
+    @Override
+    public void deleteGudang(GudangModel gudang) {
+        gudangDb.delete(gudang);
     }
 }

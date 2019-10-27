@@ -6,10 +6,7 @@ import apap.tugas.sibat.service.GudangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -51,5 +48,23 @@ public class GudangController {
         return "add-gudang-submitted";
     }
 
+    @RequestMapping(value="/gudang/hapus/{idGudang}")
+    public String deleteGudang(@PathVariable(value = "idGudang") Long idGudang, Model model){
+        GudangModel gudang = gudangService.getGudangById(idGudang).get();
+        List<GudangObatModel> listGudangObat = gudang.getListGudangObat();
+
+        boolean isDeleted = false;
+
+        if(listGudangObat.size() == 0){
+            gudangService.deleteGudang(gudang);
+            isDeleted = true;
+        }
+
+        model.addAttribute("gudang", gudang);
+        model.addAttribute("isDeleted", isDeleted);
+        model.addAttribute("idGudang", idGudang);
+
+        return "delete-gudang";
+    }
 
 }

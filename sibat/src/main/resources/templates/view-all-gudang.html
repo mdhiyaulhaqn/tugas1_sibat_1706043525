@@ -34,7 +34,8 @@
                 <a class="btn btn-info" th:href="@{/gudang/view?idGudang=} + ${gudang.id}">Lihat</a>
                 <a class="btn btn-info" th:href="@{/}" style="background-color: black; color:white;">Ubah</a>
                 <!--<button type="submit" th:value="${indexStat.index}" class="btn" style="background-color: black; color:white;">Ubah</button>-->
-                <button type="submit" name="hapusObat" th:value="${indexStat.index}"  class="btn btn-danger">Hapus</button>
+                <!--<button type="submit" name="hapusGudang" th:value="${indexStat.index}"  class="btn btn-danger">Hapus</button>-->
+                <a class="btn btn-danger" th:href="@{/gudang/hapus/} + ${gudang.id}">Hapus</a>
             </td>
         </tr>
         </tbody>

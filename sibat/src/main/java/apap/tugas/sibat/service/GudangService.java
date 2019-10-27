@@ -11,4 +11,6 @@ public interface GudangService {
     Optional<GudangModel> getGudangById(Long id);
 
     void addGudang(GudangModel gudang);
+
+    void deleteGudang(GudangModel gudang);
 }
