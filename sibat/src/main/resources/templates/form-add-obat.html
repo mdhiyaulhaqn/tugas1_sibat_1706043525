@@ -42,10 +42,11 @@
         <br>
         Supplier
         <div th:each="obatSupplier, iterationStat : *{listObatSupplier}">
-        <select th:field="*{listObatSupplier[__${iterationStat.index}__].id}">
-            <option th:each="supplier: ${listJenisSupplier}" th:value="${supplier.id}" th:text="${supplier.nama}"></option>
+        <select th:field="*{listObatSupplier[__${iterationStat.index}__].supplier}">
+            <option th:each="supplier: ${listSupplier}" th:value="${supplier.id}" th:text="${supplier.nama}"></option>
         </select>
         </div>
+        <button type="submit" class="btn btn-light" name="addRow">Tambah Supplier</button>
         <!--<select th:each="listJenisSupplier, iterationStat : ${listSupplier}"-->
                 <!--th:field="${obat.listObatSupplier[__${iterationStat.index}__]}">-->
             <!--&lt;!&ndash;<div th:each="supplier: ${listJenisSupplier}">&ndash;&gt;-->
