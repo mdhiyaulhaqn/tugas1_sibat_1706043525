@@ -13,4 +13,5 @@ public interface ObatService {
     ObatModel generateKodeObat(ObatModel obat);
     Optional<ObatModel> getObatById(String id);
     ObatModel changeObat(ObatModel obat);
+    int getUmurObat(ObatModel obat);
 }

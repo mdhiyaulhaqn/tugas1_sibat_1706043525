@@ -5,10 +5,7 @@ import apap.tugas.sibat.repository.ObatDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class ObatServiceImpl implements ObatService{
@@ -95,5 +92,18 @@ public class ObatServiceImpl implements ObatService{
 
         obat.setKode(kode);
         return obat;
+    }
+
+    @Override
+    public int getUmurObat(ObatModel obat) {
+        Date dateNow = Calendar.getInstance().getTime();
+        Date dateTerbitObat = obat.getTanggalTerbit();
+
+        int diff = dateNow.getYear() - dateTerbitObat.getYear();
+        if (dateTerbitObat.getMonth() > dateNow.getMonth() ||
+                (dateTerbitObat.getMonth() == dateNow.getMonth() && dateTerbitObat.getDate() > dateNow.getDate())) {
+            diff--;
+        }
+        return diff;
     }
 }

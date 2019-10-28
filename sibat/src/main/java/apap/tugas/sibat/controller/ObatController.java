@@ -1,9 +1,6 @@
 package apap.tugas.sibat.controller;
 
-import apap.tugas.sibat.model.JenisModel;
-import apap.tugas.sibat.model.ObatModel;
-import apap.tugas.sibat.model.ObatSupplierModel;
-import apap.tugas.sibat.model.SupplierModel;
+import apap.tugas.sibat.model.*;
 import apap.tugas.sibat.service.JenisService;
 import apap.tugas.sibat.service.ObatService;
 import apap.tugas.sibat.service.SupplierService;
@@ -94,8 +91,6 @@ public class ObatController {
         model.addAttribute("obat", newObat);
         return "change-obat-submitted";
     }
-
-
 
 
     //    Remove Obat dari list beranda
