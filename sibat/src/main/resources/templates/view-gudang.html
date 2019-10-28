@@ -8,45 +8,46 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
 
-<div class="container" style="width: 50%">
-    <br>
-    <div>
-        <h3 style="text-align: center; font-weight: bold;">Detail Gudang</h3>
-        <div class="row">
-            <p class="col">Nama</p>
-            <p class="col" th:text="${gudang.nama}"> </p>
-        </div>
-        <div class="row">
-            <p class="col">Alamat</p>
-            <p  class="col"th:text="${gudang.alamat}"> </p>
-        </div>
-        <div class="row">
-            <p class="col">Jumlah obat</p>
-            <p class="col" th:text="${gudang.listGudangObat.size()}"> </p>
-        </div>
-    </div>
+    <div class="container" style="width: 50%">
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>No</th>
-            <th>Kode</th>
-            <th>Nama</th>
-            <th>Harga</th>
-        </tr>
-        </thead>
-        <tbody>
         <br>
-        <tr th:each="gudangObat, indexStat : ${listGudangObat}">
-            <td th:text="${__${indexStat.index + 1}__}"></td>
-            <td th:text="${gudangObat.obat.kode}"></td>
-            <td th:text="${gudangObat.obat.nama}"></td>
-            <td th:text="'Rp ' + ${#numbers.formatInteger(gudangObat.obat.harga,3,'POINT')}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+        <div>
+            <h3 style="text-align: center; font-weight: bold;">Detail Gudang</h3>
+            <div class="row">
+                <p class="col">Nama</p>
+                <p class="col" th:text="${gudang.nama}"> </p>
+            </div>
+            <div class="row">
+                <p class="col">Alamat</p>
+                <p  class="col"th:text="${gudang.alamat}"> </p>
+            </div>
+            <div class="row">
+                <p class="col">Jumlah obat</p>
+                <p class="col" th:text="${gudang.listGudangObat.size()}"> </p>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Kode</th>
+                <th>Nama</th>
+                <th>Harga</th>
+            </tr>
+            </thead>
+            <tbody>
+            <br>
+            <tr th:each="gudangObat, indexStat : ${listGudangObat}">
+                <td th:text="${__${indexStat.index + 1}__}"></td>
+                <td th:text="${gudangObat.obat.kode}"></td>
+                <td th:text="${gudangObat.obat.nama}"></td>
+                <td th:text="'Rp ' + ${#numbers.formatInteger(gudangObat.obat.harga,3,'POINT')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

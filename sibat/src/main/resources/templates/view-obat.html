@@ -8,56 +8,52 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+
     <div class="container" style="width: 40%">
-        <h2 align="center">Detail Data Obat</h2>
-        <div class="col">
+        <h1 align="center" style="margin-top: 20px;">Detail Data Obat</h1>
+        <div class="col" style="margin-top: 30px;">
             <div class="row">
-                <p class="col">Kode</p>
+                <p class="col-6">Kode</p>
                 <p class="col" th:text="${obat.kode}"> </p>
             </div>
             <div class="row">
-                <p class="col">Nama</p>
+                <p class="col-6">Nama</p>
                 <p class="col" th:text="${obat.nama}"> </p>
             </div>
             <div class="row">
-                <p class="col">Nomor Registrasi</p>
+                <p class="col-6">Nomor Registrasi</p>
                 <p  class="col"th:text="${obat.nomorRegistrasi}"> </p>
             </div>
             <div class="row">
-                <p class="col">Bentuk</p>
+                <p class="col-6">Bentuk</p>
                 <p class="col" th:text="${obat.bentuk}"> </p>
             </div>
             <div class="row">
-                <p class="col"> Tanggal Terbit </p>
+                <p class="col-6"> Tanggal Terbit </p>
                 <p class="col" th:text="${obat.tanggalTerbit}"> </p>
             </div>
             <div class="row">
-                <p class="col">Harga</p>
+                <p class="col-6">Harga</p>
                 <p class="col" th:text="'Rp ' + ${obat.harga}"> </p>
             </div>
             <div class="row">
-                <p class="col"> Jenis Obat </p>
+                <p class="col-6"> Jenis Obat </p>
                 <p class="col" th:text="${obat.jenis.nama}"> </p>
             </div>
             <div class="row">
-                <p class="col">Gudang tempat disimpan</p>
+                <p class="col-6">Gudang tempat disimpan</p>
                 <div th:each="gudangObat : ${obat.listGudangObat}">
                     <p class="col" th:text="${gudangObat.gudang.nama}"> </p>
                 </div>
             </div>
             <div class="row">
-                <p class="col">Supplier</p>
+                <p class="col-6">Supplier</p>
                 <div th:each="obatSupplier : ${obat.listObatSupplier}">
                     <p class="col" th:text="${obatSupplier.supplier.nama}"> </p>
                 </div>
             </div>
-            <!--<div class="row">-->
-            <!--<p th:text="Gudang tempat disimpan">-->
-            <!--<p th:text="${obat.gudang.nama}"> </p>-->
-            <!--</div>-->
         </div>
-
     </div>
-
 </body>
 </html>

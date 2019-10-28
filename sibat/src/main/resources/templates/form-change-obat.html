@@ -8,30 +8,64 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-    <h1> Tambah Obat </h1>
-    <form th:action="@{/obat/ubah?id={id}(id=${obat.id})}" th:object="${obat}" method="POST">
-        <input type="hidden" th:field="${obat.id}"/>
-        <input type="hidden" th:field="${obat.nomorRegistrasi}"/>
-        <input type="hidden" th:field="${obat.id}"/>
-        <input type="hidden" th:field="${obat.jenis}"/>
-        Nama: <br>
-        <input type="text" th:field="*{nama}"/>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <div class="container" style="width: 40%">
+        <h1 align="center"> Ubah Data Obat </h1>
         <br>
-        Tanggal Terbit: <br>
-        <input type="date"  th:field="*{tanggalTerbit}"/>
-        <br>
-        Harga: <br>
-        <input type="number" th:field="*{harga}"/>
-        <br>
-        Bentuk: <br>
-        <select name="bentuk" th:field="*{bentuk}">
-            <option th:value="Cairan" th:text="Cairan"></option>
-            <option th:value="Kapsul" th:text="Kapsul"></option>
-            <option th:value="Tablet" th:text="Tablet"></option>
-        </select>
-        <br>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
+        <form th:action="@{/obat/ubah?id={id}(id=${obat.id})}" th:object="${obat}" method="POST">
+            <input type="hidden" th:field="${obat.id}"/>
+            <input type="hidden" th:field="${obat.nomorRegistrasi}"/>
+            <input type="hidden" th:field="${obat.id}"/>
+            <input type="hidden" th:field="${obat.jenis}"/>
+            <div class="row">
+                <p class="col-3">Nama: </p>
+                <div class="col">
+                    <input type="text" th:field="*{nama}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Tanggal terbit: </p>
+                <div class="col">
+                    <input type="date"  th:field="*{tanggalTerbit}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Harga: </p>
+                <div class="col">
+                    <input type="number" th:field="*{harga}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Bentuk: </p>
+                <div class="col">
+                    <select name="bentuk" th:field="*{bentuk}" class="form-control">
+                        <option th:value="Cairan" th:text="Cairan"></option>
+                        <option th:value="Kapsul" th:text="Kapsul"></option>
+                        <option th:value="Tablet" th:text="Tablet"></option>
+                    </select>
+                </div>
+            </div>
+            <!--Nama: <br>-->
+            <!--<input type="text" th:field="*{nama}" class="form-control"/>-->
+            <!--<br>-->
+            <!--Tanggal Terbit: <br>-->
+            <!--<input type="date"  th:field="*{tanggalTerbit}" class="form-control"/>-->
+            <!--<br>-->
+            <!--Harga: <br>-->
+            <!--<input type="number" th:field="*{harga}" class="form-control"/>-->
+            <!--<br>-->
+            <!--Bentuk: <br>-->
+            <!--<select name="bentuk" th:field="*{bentuk}" class="form-control">-->
+                <!--<option th:value="Cairan" th:text="Cairan"></option>-->
+                <!--<option th:value="Kapsul" th:text="Kapsul"></option>-->
+                <!--<option th:value="Tablet" th:text="Tablet"></option>-->
+            <!--</select>-->
+            <!--<br>-->
+            <br>
+            <div align="center">
+                <button type="submit" class="btn btn-primary" style="text-align: center">Submit</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
