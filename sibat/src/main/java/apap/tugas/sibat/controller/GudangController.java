@@ -3,12 +3,14 @@ package apap.tugas.sibat.controller;
 import apap.tugas.sibat.model.GudangModel;
 import apap.tugas.sibat.model.GudangObatModel;
 import apap.tugas.sibat.model.ObatModel;
+import apap.tugas.sibat.service.GudangObatService;
 import apap.tugas.sibat.service.GudangService;
 import apap.tugas.sibat.service.ObatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,9 @@ public class GudangController {
     @Autowired
     ObatService obatService;
 
+    @Autowired
+    GudangObatService gudangObatService;
+
     @RequestMapping(value = "/gudang")
     private String findAllGudang(Model model){
         List<GudangModel> listGudang = gudangService.getGudangList();
@@ -31,10 +36,30 @@ public class GudangController {
     @RequestMapping(value = "/gudang/view", method = RequestMethod.GET)
     private String findGudangById(@RequestParam(value = "idGudang") Long idGudang ,Model model){
         GudangModel gudang = gudangService.getGudangById(idGudang).get();
+
         List<GudangObatModel> listGudangObat = gudang.getListGudangObat();
         model.addAttribute("listGudangObat", listGudangObat);
+
+        List<ObatModel> listObat = obatService.getObatList();
+        model.addAttribute("listObat", listObat);
+
+        GudangObatModel gudangObatNew = new GudangObatModel();
+        model.addAttribute("gudangObatNew", gudangObatNew);
+
         model.addAttribute("gudang", gudang);
         return "view-gudang";
+    }
+
+    @RequestMapping(value="/gudang/tambah-obat", method = RequestMethod.POST)
+    public String addObatInGudang(@ModelAttribute GudangObatModel gudangObatModel, Model model, RedirectAttributes redirectAttributes){
+        gudangObatService.addGudangObat(gudangObatModel);
+
+        GudangModel gudang = gudangObatModel.getGudang();
+        ObatModel obat = gudangObatModel.getObat();
+
+        redirectAttributes.addFlashAttribute("obat", obat);
+
+        return "redirect:/gudang/view?idGudang=" + gudang.getId();
     }
 
     @RequestMapping(value="/gudang/tambah", method = RequestMethod.GET)
@@ -86,7 +111,7 @@ public class GudangController {
 
     @RequestMapping(value = "/gudang/expired-obat/cari", method = RequestMethod.POST)
     public String findExpiredObatByGudangSubmit(@ModelAttribute GudangModel gudangTarget,Model model){
-        // Redirect ke bawah
+        // Redirect ke ke findExpiredObatHasil()
         return "redirect:/gudang/expired-obat?idGudang=" + gudangTarget.getId();
     }
 

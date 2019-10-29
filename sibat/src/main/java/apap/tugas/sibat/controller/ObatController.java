@@ -64,7 +64,6 @@ public class ObatController {
 
     @RequestMapping(value="/obat/tambah", method = RequestMethod.POST, params={"addRow"})
     public String addRowSupplier(@ModelAttribute ObatModel obat, Model model){
-        System.out.println("MASUK ADD ROW AWAL");
         obat.getListObatSupplier().add(new ObatSupplierModel());
 
         List<JenisModel> listJenis = jenisService.getJenisList();
@@ -74,16 +73,13 @@ public class ObatController {
         model.addAttribute("listSupplier", listSupplier);
 
         model.addAttribute("obat", obat);
-        System.out.println("MASUK ADD ROW AKHIR");
         return "form-add-obat";
     }
 
     @RequestMapping(value="/obat/tambah", method = RequestMethod.POST)
     public String addObatSubmit(@ModelAttribute ObatModel obat, Model model){
-        System.out.println("MASUK SUBMIT AWAL");
         obat = obatService.generateKodeObat(obat);
 
-        System.out.println("MASUKKKKKKKK");
         for (ObatSupplierModel obatSupplier: obat.getListObatSupplier()) {
             obatSupplier.setObat(obat);
         }
@@ -95,7 +91,6 @@ public class ObatController {
         }
         model.addAttribute("obat", obat);
 
-        System.out.println("MASUK SUBMIT AKHIR");
         return "add-obat-submitted";
     }
 
