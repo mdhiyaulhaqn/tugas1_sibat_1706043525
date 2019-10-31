@@ -114,12 +114,6 @@ public class GudangController {
         return "find-obat-expired";
     }
 
-    @RequestMapping(value = "/gudang/expired-obat/cari", method = RequestMethod.POST)
-    public String findExpiredObatByGudangSubmit(@ModelAttribute GudangModel gudangTarget,Model model){
-        // Redirect ke ke findExpiredObatHasil()
-        return "redirect:/gudang/expired-obat?idGudang=" + gudangTarget.getId();
-    }
-
     @RequestMapping(value = "/gudang/expired-obat", method = RequestMethod.GET)
     public String findExpiredObatHasil(@RequestParam(value = "idGudang") Long idGudang,Model model){
         GudangModel gudang = gudangService.getGudangById(idGudang).get();
