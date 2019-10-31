@@ -5,6 +5,8 @@ import apap.tugas.sibat.repository.GudangObatDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GudangObatServiceImpl implements GudangObatService{
     @Autowired
@@ -13,5 +15,10 @@ public class GudangObatServiceImpl implements GudangObatService{
     @Override
     public void addGudangObat(GudangObatModel gudangObat) {
         gudangObatDb.save(gudangObat);
+    }
+
+    @Override
+    public List<GudangObatModel> getGudangObatByIdGudang(Long idGudang) {
+        return gudangObatDb.getAllByGudang_Id(idGudang);
     }
 }

@@ -8,6 +8,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<h2 th:text="'Obat ' + ${obat.nama} + ' dengan kode ' + ${obat.kode} + ' berhasil ditambahkan'"></h2>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <h2 th:text="'Obat ' + ${obat.nama} + ' dengan kode ' + ${obat.kode} + ' berhasil ditambahkan'"></h2>
 </body>
 </html>

@@ -41,6 +41,11 @@ public class GudangController {
         model.addAttribute("listGudangObat", listGudangObat);
 
         List<ObatModel> listObat = obatService.getObatList();
+
+        // Agar tidak bisa duplicate
+        for(GudangObatModel gudangObat : listGudangObat){
+            listObat.remove(gudangObat.getObat());
+        }
         model.addAttribute("listObat", listObat);
 
         GudangObatModel gudangObatNew = new GudangObatModel();

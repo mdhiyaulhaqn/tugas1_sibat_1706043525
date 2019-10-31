@@ -6,6 +6,8 @@ import apap.tugas.sibat.repository.ObatSupplierDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ObatSupplierServiceImpl implements ObatSupplierService {
     @Autowired
@@ -14,5 +16,10 @@ public class ObatSupplierServiceImpl implements ObatSupplierService {
     @Override
     public void addObatSupplier(ObatSupplierModel obatSupplierModel) {
         obatSupplierDb.save(obatSupplierModel);
+    }
+
+    @Override
+    public List<ObatSupplierModel> getAllObatSupplierByIdSupplier(Long idSupplier) {
+        return obatSupplierDb.getAllBySupplierId(idSupplier);
     }
 }

@@ -9,8 +9,8 @@
 </head>
 <body>
     <nav th:replace="fragments/fragment :: navbar"></nav>
-    <div class="container" style="width: 40%">
-        <h1 align="center"> Ubah Data Obat </h1>
+    <div class="container" style="width: 40%;">
+        <h1 align="center" style="marging-top:30px;"> Ubah Data Obat </h1>
         <br>
         <form th:action="@{/obat/ubah?id={id}(id=${obat.id})}" th:object="${obat}" method="POST">
             <input type="hidden" th:field="${obat.id}"/>
@@ -21,6 +21,12 @@
                 <p class="col-3">Nama: </p>
                 <div class="col">
                     <input type="text" th:field="*{nama}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Nomor registrasi: </p>
+                <div class="col">
+                    <input disabled type="text" th:value="*{nomorRegistrasi}" class="form-control"/>
                 </div>
             </div>
             <div class="row">
@@ -43,6 +49,23 @@
                         <option th:value="Kapsul" th:text="Kapsul"></option>
                         <option th:value="Tablet" th:text="Tablet"></option>
                     </select>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Jenis: </p>
+                <div class="col">
+                    <input disabled type="text" th:value="*{jenis.nama}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Supplier: </p>
+                <div class="col">
+                    <!--<div th:each="{}">-->
+                        <!--<input disabled type="text" th:value="*{nomorRegistrasi}" class="form-control"/>-->
+                    <!--</div>-->
+                    <div th:each="obatSupplier, iterationStat : *{listObatSupplier}">
+                        <input disabled th:value="${obatSupplier.supplier.nama}" class="form-control">
+                    </div>
                 </div>
             </div>
             <!--Nama: <br>-->

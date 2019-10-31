@@ -31,21 +31,19 @@
 
         <div align="center" style="margin-top: 10px;">
             <form th:action="@{/gudang/tambah-obat}" th:object="${gudangObatNew}" method="POST">
-                <p>Tambah Obat</p>
-                <!--<div th:field="*{gudang}">-->
-                    <!--<input type="text" th:value="${gudang.id}">-->
-                <!--</div>-->
-                <input type="hidden" name="gudang" th:value="${gudang.id}">
-                <select th:field="*{obat}">
-                    <div th:each="obat: ${listObat}">
-                        <option th:value="${obat.id}" th:text="${obat.nama}"></option>
-                    </div>
-                </select>
-                <!--<button onclick="$.post('/gudang/tambah-obat')" class="btn btn-dark">Submit</button>-->
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <h5>Tambah Obat</h5>
+                <div align="center" style="text-align: center">
+                    <input type="hidden" name="gudang" th:value="${gudang.id}">
+                    <select th:field="*{obat}" style="width: 150px">
+                        <div th:each="obat: ${listObat}">
+                            <option th:value="${obat.id}" th:text="${obat.nama}"></option>
+                        </div>
+                    </select>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
             </form>
             <div th:if="${obat != null}" align="center">
-                <p th:text="'Obat ' + ${obat.nama} + ' berhasil ditambahkan.'"></p>
+                <p th:text="'Obat ' + ${obat.nama} + ' berhasil ditambahkan.'" style="color: lightseagreen;"></p>
             </div>
         </div>
 
