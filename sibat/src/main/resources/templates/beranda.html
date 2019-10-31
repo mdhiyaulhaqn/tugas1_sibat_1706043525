@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beranda</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+        <div class="card">
+            <div class="card-header">
+                <h1 align="center" class="card-title">Daftar Obat</h1>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Nama</th>
+                                <th>Harga</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <br>
+                            <tr th:each="obat, indexStat : ${obatList}">
+                                <td th:text="${__${indexStat.index + 1}__}"></td>
+                                <td th:text="${obat.kode}"></td>
+                                <td th:text="${obat.nama}"></td>
+                                <td th:text="'Rp ' + ${#numbers.formatInteger(obat.harga,3,'POINT')}"></td>
+                                <td>
+                                    <a class="btn btn-info" th:href="@{/obat/view?noReg=}+${obat.nomorRegistrasi}">Lihat</a>
+                                    <a class="btn btn-info" th:href="@{/obat/ubah?id=}+${obat.id}" style="background-color: black; color:white;">Ubah</a>
+                                    <button type="submit"  name="hapusObat" th:value="${indexStat.index}"  class="btn btn-danger">Hapus</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: right;">
+                        <a class="btn" th:href="@{/obat/tambah}" style="background-color: black; color:white;">Tambah Obat</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Obat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <div class="container" style="width: 50%; margin-top: 30px;">
+        <h1 align="center" style="margin-bottom: 20px;"> Tambah Obat </h1>
+        <form th:action="@{/obat/tambah}" th:object="${obat}" method="POST">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="row">
+                <p class="col-3">Nama: </p>
+                <div class="col">
+                    <input type="text" th:field="*{nama}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Nomor Registrasi: </p>
+                <div class="col">
+                    <input type="text" th:field="*{nomorRegistrasi}" name="nomorRegistrasi" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Tanggal terbit: </p>
+                <div class="col">
+                    <input type="date" th:field="*{tanggalTerbit}" name="tanggalTerbit" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Harga: </p>
+                <div class="col">
+                    <input type="number" th:field="*{harga}" name="harga" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Bentuk: </p>
+                <div class="col">
+                    <select name="bentuk" th:field="*{bentuk}" class="form-control">
+                        <option th:value="Cairan" th:text="Cairan"></option>
+                        <option th:value="Kapsul" th:text="Kapsul"></option>
+                        <option th:value="Tablet" th:text="Tablet"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Jenis: </p>
+                <div class="col">
+                    <select name="jenis" th:field="*{jenis}" class="form-control">
+                        <div th:each="jenis: ${listJenis}">
+                            <option th:value="${jenis.id}" th:text="${jenis.nama}"></option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Supplier: </p>
+                <div class="col">
+                    <div th:each="obatSupplier, iterationStat : *{listObatSupplier}">
+                        <select th:field="*{listObatSupplier[__${iterationStat.index}__].supplier}" class="form-control">
+                            <option th:each="supplier: ${listSupplier}" th:value="${supplier.id}" th:text="${supplier.nama}"></option>
+                        </select>
+                    </div>
+                    <div align="right">
+                        <button type="submit" class="btn btn-outline-primary" name="addRow" style="margin-top: 10px">Tambah Supplier</button>
+                    </div>
+                </div>
+            </div>
+            <div align="center">
+                <button type="submit" class="btn btn-primary" style="width: 250px; font-size: 22px;"> Submit </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

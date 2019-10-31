@@ -1,5 +1,9 @@
-# Tugas 1 APAP
+# Tugas 1 - APAP
 
-## Authors
+# SIBAT
+Repository ini berisi project Sistem Informasi Obat untuk Tugas 1 APAP. SIBAT mendukung pekerjaan dari pihak farmasi di Rumah Sakit Uni
 
-* **muhammad.dhiyaulhaq** - *1706043525* - *C*
+[url repo](https://github.com/mdhiyaulhaqn/tugas1_sibat_1706043525)
+
+## Contributor
+Muhammad Dhiyaulhaq Nugraha - 1706043525

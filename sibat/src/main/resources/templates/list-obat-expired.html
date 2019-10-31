@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List Obat Expired</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<div class="container" style="width: 50%">
+    <br>
+    <h2 th:text="'Daftar Obat Expired di Gudang ' + ${gudang.nama}"></h2>
+    <div th:if="${listObatExpired.size() != 0}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Kode</th>
+                <th>Nama</th>
+                <th>Nomor registrasi</th>
+                <th>Tanggal terbit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <br>
+            <tr th:each="obat, indexStat : ${listObatExpired}">
+                <td th:text="${__${indexStat.index + 1}__}"></td>
+                <td th:text="${obat.kode}"></td>
+                <td th:text="${obat.nama}"></td>
+                <td th:text="${obat.nomorRegistrasi}"></td>
+                <td th:text="${obat.tanggalTerbit}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${listObatExpired.size() != 0}">
+        <h5 align="center">Tidak ada obat yang expired</h5>
+    </div>
+    <a th:href="@{/}">kembali ke beranda</a>
+</div>
+</body>
+</html>

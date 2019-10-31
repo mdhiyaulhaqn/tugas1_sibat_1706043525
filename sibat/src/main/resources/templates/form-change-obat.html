@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ubah Obat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <div class="container" style="width: 40%;">
+        <h1 align="center" style="marging-top:30px;"> Ubah Data Obat </h1>
+        <br>
+        <form th:action="@{/obat/ubah?id={id}(id=${obat.id})}" th:object="${obat}" method="POST">
+            <input type="hidden" th:field="${obat.id}"/>
+            <input type="hidden" th:field="${obat.nomorRegistrasi}"/>
+            <input type="hidden" th:field="${obat.id}"/>
+            <input type="hidden" th:field="${obat.jenis}"/>
+            <div class="row">
+                <p class="col-3">Nama: </p>
+                <div class="col">
+                    <input type="text" th:field="*{nama}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Nomor registrasi: </p>
+                <div class="col">
+                    <input disabled type="text" th:value="*{nomorRegistrasi}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Tanggal terbit: </p>
+                <div class="col">
+                    <input type="date"  th:field="*{tanggalTerbit}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Harga: </p>
+                <div class="col">
+                    <input type="number" th:field="*{harga}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Bentuk: </p>
+                <div class="col">
+                    <select name="bentuk" th:field="*{bentuk}" class="form-control">
+                        <option th:value="Cairan" th:text="Cairan"></option>
+                        <option th:value="Kapsul" th:text="Kapsul"></option>
+                        <option th:value="Tablet" th:text="Tablet"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Jenis: </p>
+                <div class="col">
+                    <input disabled type="text" th:value="*{jenis.nama}" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-3">Supplier: </p>
+                <div class="col">
+                    <!--<div th:each="{}">-->
+                        <!--<input disabled type="text" th:value="*{nomorRegistrasi}" class="form-control"/>-->
+                    <!--</div>-->
+                    <div th:each="obatSupplier, iterationStat : *{listObatSupplier}">
+                        <input disabled th:value="${obatSupplier.supplier.nama}" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <!--Nama: <br>-->
+            <!--<input type="text" th:field="*{nama}" class="form-control"/>-->
+            <!--<br>-->
+            <!--Tanggal Terbit: <br>-->
+            <!--<input type="date"  th:field="*{tanggalTerbit}" class="form-control"/>-->
+            <!--<br>-->
+            <!--Harga: <br>-->
+            <!--<input type="number" th:field="*{harga}" class="form-control"/>-->
+            <!--<br>-->
+            <!--Bentuk: <br>-->
+            <!--<select name="bentuk" th:field="*{bentuk}" class="form-control">-->
+                <!--<option th:value="Cairan" th:text="Cairan"></option>-->
+                <!--<option th:value="Kapsul" th:text="Kapsul"></option>-->
+                <!--<option th:value="Tablet" th:text="Tablet"></option>-->
+            <!--</select>-->
+            <!--<br>-->
+            <br>
+            <div align="center">
+                <button type="submit" class="btn btn-primary" style="text-align: center">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title> Add Gudang </title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container" style="width: 30%; text-align: center; margin-top:20px;">
+    <div class="card" >
+        <div class="card-header">
+            <h3> Tambah Gudang </h3>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/gudang/tambah}" th:object="${gudang}" method="POST">
+                Nama: <br>
+                <input type="text" class="form-control" name="nama"/>
+                <br>
+                Alamat: <br>
+                <input type="text" class="form-control" name="alamat"/>
+                <br>
+                <button type="submit" class="btn btn-primary" style="width: 150px;"> Submit </button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Delete Gudang</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div th:if="${gudang != null}">
+    <div th:if="${isDeleted}">
+        <h2 th:text="'Gudang dengan nama ' + ${gudang.nama} + ' berhasil dihapus'"></h2>
+    </div>
+    <div th:unless="${isDeleted}">
+        <h2 th:text="'Gudang dengan nama ' + ${gudang.nama} + ' tidak bisa dihapus karena terdapat obat yang disimpan di gudang tersebut'"></h2>
+    </div>
+</div>
+<div th:unless="${gudang != null}">
+    <h2 th:text="'Gudang dengan id ' + ${idGudang} + ' tidak ditemukan.'"></h2>
+</div>
+
+</body>
+</html>

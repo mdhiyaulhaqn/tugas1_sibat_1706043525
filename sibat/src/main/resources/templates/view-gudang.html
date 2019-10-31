@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Gudang</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+
+    <div class="container" style="width: 50%">
+
+        <br>
+        <div>
+            <h3 style="text-align: center; font-weight: bold;">Detail Gudang</h3>
+            <div class="row">
+                <p class="col">Nama</p>
+                <p class="col" th:text="${gudang.nama}"> </p>
+            </div>
+            <div class="row">
+                <p class="col">Alamat</p>
+                <p  class="col"th:text="${gudang.alamat}"> </p>
+            </div>
+            <div class="row">
+                <p class="col">Jumlah obat</p>
+                <p class="col" th:text="${gudang.listGudangObat.size()}"> </p>
+            </div>
+        </div>
+
+        <div align="center" style="margin-top: 10px;">
+            <form th:action="@{/gudang/tambah-obat}" th:object="${gudangObatNew}" method="POST">
+                <h5>Tambah Obat</h5>
+                <div align="center" style="text-align: center">
+                    <input type="hidden" name="gudang" th:value="${gudang.id}">
+                    <select th:field="*{obat}" style="width: 150px">
+                        <div th:each="obat: ${listObat}">
+                            <option th:value="${obat.id}" th:text="${obat.nama}"></option>
+                        </div>
+                    </select>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+            </form>
+            <div th:if="${obat != null}" align="center">
+                <p th:text="'Obat ' + ${obat.nama} + ' berhasil ditambahkan.'" style="color: lightseagreen;"></p>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Kode</th>
+                <th>Nama</th>
+                <th>Harga</th>
+            </tr>
+            </thead>
+            <tbody>
+            <br>
+            <tr th:each="gudangObat, indexStat : ${listGudangObat}">
+                <td th:text="${__${indexStat.index + 1}__}"></td>
+                <td th:text="${gudangObat.obat.kode}"></td>
+                <td th:text="${gudangObat.obat.nama}"></td>
+                <td th:text="'Rp ' + ${#numbers.formatInteger(gudangObat.obat.harga,3,'POINT')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

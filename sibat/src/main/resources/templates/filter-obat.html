@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<script>
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    } );
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Beranda</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <div align="center">
+        <h1 style="margin-top: 20px;">Daftar Obat</h1>
+        <div class="card"  style="width: 25%">
+            <div class="card-header" style="height: 50px;">
+                <p>Filter berdasarkan :</p>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/obat/filter}">
+                    Gudang: <br>
+                    <select name="idGudang" class="form-control" style="width: 250px;">
+                        <option th:value="-1" selected>--Pilih Gudang--</option>
+                        <option th:each="gudang : ${listGudang}" th:value="${gudang.id}" th:text="${gudang.nama}" th:selected="${idGudang == gudang.id}"></option>
+                    </select>
+                    Jenis: <br>
+                    <select name="idJenis" class="form-control" style="width: 250px;">
+                        <option th:value="-1" selected>--Pilih Jenis--</option>
+                        <option th:each="jenis : ${listJenis}" th:value="${jenis.id}" th:text="${jenis.nama}" th:selected="${idJenis == jenis.id}"></option>
+                    </select>
+                    Supplier: <br>
+                    <select name="idSupplier" class="form-control" style="width: 250px;">
+                        <option th:value="-1" selected>--Pilih Supplier--</option>
+                        <option th:each="supplier : ${listSupplier}" th:value="${supplier.id}" th:text="${supplier.nama}" th:selected="${idSupplier == supplier.id}"></option>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary" style="width: 200px"> Cari </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table" id="table_id">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Gudang</th>
+                    <th>Jenis</th>
+                    <th>Supplier</th>
+                </tr>
+            </thead>
+            <tbody>
+            <br>
+                <tr th:each="obat, indexStat : ${listObat}">
+                    <td th:text="${__${indexStat.index + 1}__}"></td>
+                    <td th:text="${obat.kode}"></td>
+                    <td th:text="${obat.nama}"></td>
+                    <td th:text="'Rp ' + ${#numbers.formatInteger(obat.harga,3,'POINT')}"></td>
+                    <!--<td th:text="${obat.gudangObat[indexStat].gudang.nama}"></td>-->
+                    <td th:text="${namaGudang}"></td>
+                    <td th:text="${obat.jenis.nama}"></td>
+                    <!--<td th:text="${obat.ObatSupplier.gudang.nama}"></td>-->
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+
+</html>
+
